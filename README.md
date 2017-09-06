@@ -6,10 +6,10 @@ Data is the new commodity, and a ton of it exists on Stackoverflow. Making sense
 
 ### Functionality & MVP  
 
-- [ ] See questions asked as a stream of blocks that are color coded by language.
+- [ ] See stack overflow questions as a stream of cubes that are color coded by language.
+- [ ] Render new question (cubes) as set intervals -- this requires a queue.
+- [ ] Inspect blocks by hovering over them with a cursor. This should show question details.
 - [ ] Filter languages by typing.
-- [ ] Pause the stream to inspect blocks by hovering over them with a cursor. This should show question details.
-- [ ] Move forward and backward on a timeline of when the questions were asked.
 
 In addition, this project will include:
 
