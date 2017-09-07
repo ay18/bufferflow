@@ -48,11 +48,15 @@ In addition to the entry file, there will be three scripts involved in this proj
 - Learn enough threejs to render cubes on the screen. Stackoverflow questions will be represented by these cubes.
 
 **Day 2:**
-- Continue with threejs, cubes should now be rendered.
+- Authenticate application.
+- Continue with threejs, cubes should now be rendered and color coded by language.
+- Add movement to cubes.
 - Add raycasting for mouse hover interaction with threejs elements. The intention is to hover over a cube (question) and some basic detail about the question should appear.
+- Add stats on the side of application that keeps track of question and answers per language.
 
 **Day 3:**
-- Add stats on the side of application that keeps track of question and answers per language.
+- Add typing interaction used to filter cubes.
+- Add controls to filter cubes by time.
 
 **Bonus:**
 - Allow typing to filter 
