@@ -31,7 +31,7 @@ In addition to the entry file, there will be three scripts involved in this proj
 
 - cube.js - representing a question in three js.
 - bufferflow.js - main application logic
-- stackexchangeUtil.js - http methods for fetching data from stackexchange API.
+- SEUtils.js - http methods for fetching data from stackexchange API.
 - canvasController.js - for interacting with three JS canvas.
 
 ### Implementation Timeline

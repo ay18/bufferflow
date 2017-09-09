@@ -1,5 +1,7 @@
 body {
   font-family: 'Open Sans';
+  font-size: 18px;
+  // color: #fff;
 }
 
 .overlay {
@@ -15,9 +17,11 @@ body {
   flex-wrap: wrap;
 
   .row {
-    // background-color: rgba(0, 0, 0, 0.05);
     display: flex;
     width: 100%;
+    div {
+      padding: 5px;
+    }
   }
   
   .row div {
