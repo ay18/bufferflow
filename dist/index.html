@@ -14,16 +14,27 @@
   <body>
     <script type='text/javascript' src='https://api.stackexchange.com/js/2.0/all.js'></script>
     <script src='./bundle.js'></script>
+    
     <div id='overlay' class='overlay'>
       <div class='stats'>
         
-        <div class='row rendered'>
-          <div class='label'>Rendered</div><div class='val'>0</div>
+        <div class='tags'>
+          <table>
+            <thead>
+              <tr>
+                <th>tags</th>
+                <th>n</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
         </div>
         
-        <!-- <div class='row fetched'>
-          <div class='label'>Fetched</div><div class='val'>me too</div>
-        </div> -->
+        <div class='main'>
+          <div class='rendered row'>
+            <div class='label'>Rendered</div><div class='val'>0</div>
+          </div>
+        </div>
         
       </div>
     </div>

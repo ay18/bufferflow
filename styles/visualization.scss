@@ -5,27 +5,39 @@ body {
 }
 
 .overlay {
-  width: 300px;
+  width: 100%;
+  height: 100%;
   // text-align: center;
   position: absolute;
-  top: 100px;
-  left: 200px;
+  top: 0;
+  left: 0;
+  padding: 50px;
+  box-sizing: border-box;
 }
 
 .stats {
   display: flex;
   flex-wrap: wrap;
-
+  
   .row {
-    display: flex;
-    width: 100%;
     div {
-      padding: 5px;
+      box-sizing: border-box;
+      padding: 0 10px;
     }
   }
   
-  .row div {
-    width: 100%;
+  .tags {
+    width: 10%;
+    font-size: 12px;
   }
   
+  .main {
+    box-sizing: border-box;
+    width: 90%;
+    padding-left: 20px;
+  }
+  
+  .rendered {
+    display: flex;
+  }
 }
