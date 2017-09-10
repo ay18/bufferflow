@@ -42,7 +42,7 @@ module.exports = {
   ],
   devtool: 'inline-source-map',
   devServer: {
-    contentBase: path.join(__dirname, "dist"),
+    // contentBase: path.join(__dirname, "dist"),
     compress: true,
     inline: true,
     hot: true,
