@@ -12,7 +12,8 @@ body {
   top: 0;
   left: 0;
   padding: 50px;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  opacity: 0.5; }
 
 .stats {
   display: flex;
@@ -30,16 +31,16 @@ body {
     .stats .tags .tags-list {
       display: flex;
       flex-wrap: wrap; }
-    .stats .tags .tags-group {
+    .stats .tags .tag-group {
       padding: 4px 12px;
       width: 50%;
       box-sizing: border-box;
       display: flex; }
-      .stats .tags .tags-group span {
+      .stats .tags .tag-group span {
         display: inline-block; }
-      .stats .tags .tags-group .tag-subject {
+      .stats .tags .tag-group .tag-subject {
         width: 82%; }
-      .stats .tags .tags-group .tag-count {
+      .stats .tags .tag-group .tag-count {
         width: 18%; }
   .stats .main {
     box-sizing: border-box;
