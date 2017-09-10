@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack --progress --watch",
-    "start": "webpack-dev-server --open"
+    "start": "webpack-dev-server --hot --inline"
   },
   "keywords": [],
   "author": "",

@@ -1,16 +1,17 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const path = require('path');
 
-const extractSass = new ExtractTextPlugin({
-    filename: "style.css",
-    disable: process.env.NODE_ENV === "development"
-});
+// const extractSass = new ExtractTextPlugin({
+//     filename: "./styles.css",
+//     // disable: process.env.NODE_ENV === "development"
+// });
 
 module.exports = {
   entry: './lib/main.js',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/dist/'
   },
   module: {
     loaders: [
@@ -23,16 +24,20 @@ module.exports = {
         }
       }
     ],
-    rules: [{
-      test: /\.scss$/,
-      use: ['css-hot-loader'].concat(ExtractTextPlugin.extract({
-        fallback: 'style-loader',
-        use: ['css-loader', 'sass-loader'],
-      })),
-    }]
+    rules: [
+        {
+          test: /\.scss$/,
+          use: ['css-hot-loader'].concat(ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            use: ['css-loader', 'sass-loader']
+          }))
+        },
+      ]
   },
   plugins: [
-    extractSass
+    new ExtractTextPlugin({
+      filename: 'styles.css'
+    })
   ],
   devtool: 'inline-source-map',
   devServer: {
