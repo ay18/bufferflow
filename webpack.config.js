@@ -45,7 +45,6 @@ module.exports = {
     // contentBase: path.join(__dirname, "dist"),
     compress: true,
     inline: true,
-    hot: true,
     port: 8000
   }
 };
