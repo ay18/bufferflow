@@ -1,10 +1,5 @@
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 const path = require('path');
-
-// const extractSass = new ExtractTextPlugin({
-//     filename: "./styles.css",
-//     // disable: process.env.NODE_ENV === "development"
-// });
 
 module.exports = {
   entry: './lib/main.js',
@@ -25,24 +20,32 @@ module.exports = {
       }
     ],
     rules: [
-        {
-          test: /\.scss$/,
-          use: ['css-hot-loader'].concat(ExtractTextPlugin.extract({
-            fallback: 'style-loader',
-            use: ['css-loader', 'sass-loader']
-          }))
-        },
-      ]
+			{
+        test: /\.scss/,
+        // HMR for styles
+        use: ['css-hot-loader'].concat(ExtractTextWebpackPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader','sass-loader'],
+        })),
+      },
+			{
+				test: /\.(js)$/,
+				exclude: /(node_modules|bower_components)/,
+				use : ['babel-loader']
+			}
+		]
   },
   plugins: [
-    new ExtractTextPlugin({
-      filename: 'styles.css'
-    })
+    new ExtractTextWebpackPlugin({ 
+      filename: 'styles.css', disable: false, allChunks: true 
+    }),
   ],
   devtool: 'inline-source-map',
   devServer: {
     contentBase: path.join(__dirname, "dist"),
     compress: true,
+    inline: true,
+    hot: true,
     port: 8000
   }
 };
