@@ -34,6 +34,7 @@ a {
       margin-bottom: 10px;
       
       span {
+        font-size: 20px;
         padding: 4px 12px;
       }
     }
@@ -73,13 +74,16 @@ a {
       flex-direction: row-reverse;
       
       .rendered {
+        display: flex;
+        
         .val {
-          font-size: 60px;
+          font-size: 28px;
         }
         
         .bf {
           font-family: 'Asap', sans-serif;
-          font-size: 28px;
+          font-size: 54px;
+          padding-right: 40px;
         }
       }
     }
