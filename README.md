@@ -15,6 +15,17 @@ In addition, this project will include:
 
 - [ ] A production README
 
+### Commands
+dev
+```
+npm run dev
+```
+
+prod
+```
+npm run build
+```
+
 ### Wireframes
 
 ![buf](https://raw.githubusercontent.com/sksea/i/master/bufferflow/bufferflow.png)
