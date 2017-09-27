@@ -1,66 +1,92 @@
 body {
   font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
   color: #2C2C2C;
   margin: 0;
   width: 100%;
   height: 100%;
   overflow: hidden; }
 
+.hidden {
+  opacity: 0; }
+
 a {
   color: #4fa5f3; }
 
 .overlay {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   position: absolute;
   top: 0;
   left: 0;
   padding: 50px;
-  box-sizing: border-box;
-  opacity: 0.5; }
+  box-sizing: border-box; }
 
-.stats {
+#main-overlay {
+  opacity: 0.8; }
+
+#search-overlay {
+  font-size: 140px;
+  width: 100%;
+  display: flex;
+  box-sizing: border-box;
+  position: absolute;
+  z-index: 2; }
+
+.search-input {
+  word-wrap: break-word;
+  max-width: 100%;
+  color: #4078F2;
+  font-family: 'Source Code Pro', monospace;
+  text-align: center;
+  position: absolute;
+  width: 90%;
+  top: 50%;
+  transform: translateY(-50%); }
+
+#stats {
+  color: #A5A5A5;
   display: flex;
   flex-wrap: wrap; }
-  .stats .tags {
-    width: 30%;
-    font-size: 12px; }
-    .stats .tags .tags-header {
+  #stats #tags {
+    width: 30%; }
+    #stats #tags #tags-header {
       margin-bottom: 10px; }
-      .stats .tags .tags-header span {
+      #stats #tags #tags-header span {
         font-size: 20px;
         padding: 4px 12px; }
-    .stats .tags .tags-list {
+    #stats #tags #tags-list {
       display: flex;
       flex-wrap: wrap; }
-    .stats .tags .tag-group {
+    #stats #tags .tag-group {
       padding: 4px 12px;
       width: 50%;
       box-sizing: border-box;
       display: flex; }
-      .stats .tags .tag-group span {
+      #stats #tags .tag-group span {
         display: inline-block; }
-      .stats .tags .tag-group .tag-subject {
+      #stats #tags .tag-group .tag-subject {
         width: 82%; }
-      .stats .tags .tag-group .tag-count {
+      #stats #tags .tag-group .tag-count {
         width: 18%; }
-  .stats .main {
+  #stats #main {
     box-sizing: border-box;
     width: 70%;
     padding-left: 20px; }
-    .stats .main .m-r1 {
+    #stats #main .m-r1 {
       display: flex;
       flex-direction: row-reverse; }
-      .stats .main .m-r1 .rendered {
+      #stats #main .m-r1 .rendered {
         display: flex; }
-        .stats .main .m-r1 .rendered .val {
+        #stats #main .m-r1 .rendered .val {
           font-size: 28px; }
-        .stats .main .m-r1 .rendered .bf {
+        #stats #main .m-r1 .rendered .bf {
           font-family: 'Asap', sans-serif;
           font-size: 54px;
           padding-right: 40px; }
 
 .info {
+  z-index: 3;
   position: absolute;
   overflow: scroll;
   max-height: 620px;
@@ -69,7 +95,7 @@ a {
   box-sizing: border-box;
   padding: 8px 16px;
   opacity: 1;
-  font-size: 12px;
+  font-size: 14px;
   -webkit-transition-property: opacity;
   -webkit-transition-duration: 2s;
   -webkit-transition-timing-function: ease;
