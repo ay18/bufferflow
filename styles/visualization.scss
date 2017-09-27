@@ -8,6 +8,10 @@ body {
   overflow: hidden;
 }
 
+.hidden {
+  opacity: 0;
+}
+
 a {
   color: #4fa5f3;
 }
@@ -47,15 +51,15 @@ a {
   transform: translateY(-50%);
 }
 
-.stats {
-  color: #b7b7b7;
+#stats {
+  color: #A5A5A5;
   display: flex;
   flex-wrap: wrap;
   
-  .tags {
+  #tags {
     width: 30%;
     
-    .tags-header {
+    #tags-header {
       margin-bottom: 10px;
       
       span {
@@ -64,7 +68,7 @@ a {
       }
     }
     
-    .tags-list {
+    #tags-list {
       display: flex;
       flex-wrap: wrap;
     }
@@ -89,7 +93,7 @@ a {
     }
   }
   
-  .main {
+  #main {
     box-sizing: border-box;
     width: 70%;
     padding-left: 20px;
