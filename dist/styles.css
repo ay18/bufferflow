@@ -61,7 +61,7 @@ a {
     #stats #tags #tags-header {
       margin-bottom: 10px; }
       #stats #tags #tags-header span {
-        font-size: 20px;
+        font-size: 18px;
         padding: 4px 12px; }
     #stats #tags #tags-list {
       display: flex;
@@ -109,6 +109,8 @@ a {
   #footer .f-group {
     margin: 0 8px;
     line-height: 1.8; }
+  #footer .f-group.one {
+    margin-right: 18px; }
   #footer .fa {
     font-size: 28px;
     margin-right: 10px; }
