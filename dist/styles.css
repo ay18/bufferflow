@@ -93,6 +93,10 @@ a {
           font-family: 'Asap', sans-serif;
           font-size: 54px;
           padding-right: 40px; }
+    #stats #main #instructions {
+      margin-top: 10px;
+      display: flex;
+      justify-content: flex-end; }
 
 #footer {
   width: 100%;
