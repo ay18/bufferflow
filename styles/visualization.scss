@@ -75,7 +75,7 @@ a {
       margin-bottom: 10px;
       
       span {
-        font-size: 20px;
+        font-size: 18px;
         padding: 4px 12px;
       }
     }
@@ -150,6 +150,10 @@ a {
   .f-group {
     margin: 0 8px;
     line-height: 1.8
+  }
+  
+  .f-group.one {
+    margin-right: 18px;
   }
 
   .fa {
