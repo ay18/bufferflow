@@ -39,7 +39,7 @@ a {
   font-size: 20px; }
   #search-term .term {
     font-size: 30px;
-    color: #292929;
+    color: #4078F2;
     margin-left: 10px; }
 
 .search-input {
@@ -111,11 +111,19 @@ a {
   transition-property: opacity;
   transition-duration: 2s;
   transition-timing-function: ease; }
-  .info .close {
-    height: 26px;
-    width: 26px;
-    background-color: #111111;
-    background-image: url(/dist/105d8dcaa0e8b10077a259e0ff0f1724.svg); }
+  .info .close-wrapper {
+    display: flex;
+    justify-content: flex-end; }
+    .info .close-wrapper .close {
+      height: 14px;
+      width: 14px;
+      position: relative;
+      left: 6px;
+      background-image: url(/dist/c81fa848a0b78d639f2bf779c88cc620.svg); }
+  .info .tags {
+    color: #4078F2; }
+  .info span {
+    margin: 2px 4px; }
 
 .info.closing {
   opacity: 0 !important; }
