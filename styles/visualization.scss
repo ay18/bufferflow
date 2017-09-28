@@ -46,7 +46,7 @@ a {
   
   .term {
     font-size: 30px;
-    color: #292929;
+    color: #4078F2;
     margin-left: 10px;
   }
 }
@@ -150,6 +150,28 @@ a {
   transition-property: opacity;
   transition-duration: 2s;
   transition-timing-function: ease;
+
+  .close-wrapper {
+    display: flex;
+    justify-content: flex-end;
+
+    .close {
+      height: 14px;
+      width: 14px;
+      position: relative;
+      left: 6px;
+      background-image: url('../assets/x.svg');
+    }
+  }
+
+  .tags {
+    color: #4078F2;
+  }
+
+  span {
+    margin: 2px 4px;
+  }
+
 }
 
 .info.closing {

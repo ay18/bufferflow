@@ -33,6 +33,15 @@ a {
   position: absolute;
   z-index: 2; }
 
+#search-term {
+  margin-top: 120px;
+  text-align: right;
+  font-size: 20px; }
+  #search-term .term {
+    font-size: 30px;
+    color: #292929;
+    margin-left: 10px; }
+
 .search-input {
   word-wrap: break-word;
   max-width: 100%;
@@ -102,6 +111,11 @@ a {
   transition-property: opacity;
   transition-duration: 2s;
   transition-timing-function: ease; }
+  .info .close {
+    height: 26px;
+    width: 26px;
+    background-color: #111111;
+    background-image: url(/dist/105d8dcaa0e8b10077a259e0ff0f1724.svg); }
 
 .info.closing {
   opacity: 0 !important; }

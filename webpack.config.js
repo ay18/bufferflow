@@ -17,7 +17,7 @@ module.exports = {
         query: {
           presets: ['es2015']
         }
-      }
+      },
     ],
     rules: [
 			{
@@ -32,7 +32,16 @@ module.exports = {
 				test: /\.(js)$/,
 				exclude: /(node_modules|bower_components)/,
 				use : ['babel-loader']
-			}
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {}  
+          }
+        ]
+      }
 		]
   },
   plugins: [
