@@ -11,7 +11,7 @@ body {
   opacity: 0; }
 
 a {
-  color: #4fa5f3; }
+  color: #4078F2; }
 
 .overlay {
   width: 100%;
@@ -54,7 +54,6 @@ a {
   transform: translateY(-50%); }
 
 #stats {
-  color: #A5A5A5;
   display: flex;
   flex-wrap: wrap; }
   #stats #tags {
@@ -81,7 +80,8 @@ a {
   #stats #main {
     box-sizing: border-box;
     width: 70%;
-    padding-left: 20px; }
+    padding-left: 20px;
+    position: relative; }
     #stats #main .m-r1 {
       display: flex;
       flex-direction: row-reverse; }
@@ -93,6 +93,27 @@ a {
           font-family: 'Asap', sans-serif;
           font-size: 54px;
           padding-right: 40px; }
+
+#footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  text-align: center;
+  padding: 8px 15px;
+  display: flex;
+  justify-content: flex-end;
+  box-sizing: border-box;
+  z-index: 10;
+  font-size: 18px; }
+  #footer .f-group {
+    margin: 0 8px;
+    line-height: 1.8; }
+  #footer .fa {
+    font-size: 28px;
+    margin-right: 10px; }
+  #footer a {
+    color: #2C2C2C; }
 
 .info {
   z-index: 3;
