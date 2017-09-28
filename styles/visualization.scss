@@ -13,7 +13,7 @@ body {
 }
 
 a {
-  color: #4fa5f3;
+  color: #4078F2;
 }
 
 .overlay {
@@ -64,7 +64,7 @@ a {
 }
 
 #stats {
-  color: #A5A5A5;
+  // color: #A5A5A5;
   display: flex;
   flex-wrap: wrap;
   
@@ -109,6 +109,7 @@ a {
     box-sizing: border-box;
     width: 70%;
     padding-left: 20px;
+    position: relative;
     
     .m-r1 {
       display: flex;
@@ -131,6 +132,34 @@ a {
     
   }  
   
+}
+
+#footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  text-align: center;
+  padding: 8px 15px;
+  display: flex;
+  justify-content: flex-end;  
+  box-sizing: border-box;
+  z-index: 10;
+  font-size: 18px;
+
+  .f-group {
+    margin: 0 8px;
+    line-height: 1.8
+  }
+
+  .fa {
+    font-size: 28px;
+    margin-right: 10px;
+  }
+
+  a {
+    color: #2C2C2C;
+  }
 }
 
 .info {
