@@ -1,74 +1,85 @@
 ## Bufferflow - a visualization project for Stackoverflow data
 
-### Background
+Bufferflow is a 3D visualization of Stackoverflow questions and data. Prompted by my curiosity in which technologies others are interested in and a desire to play with three.js, a WebGL library written in JavaScript, this project seemed like a good opportunity to combine the two. Bufferflow tries to present data such as question topic, comments, and upvotes intuitively and interactively.
 
-Data is the new commodity, and a ton of it exists on Stackoverflow. Making sense of this data may shed insight on current interest on technologies and the community's overall mastery of a technology based on metrics like numbers of questions answered. Bufferflow will try to present this data in a visual and interactive way by taking advantage of three.js, a webGL framework.
-
-### Functionality & MVP  
-
-- [ ] See stack overflow questions as a stream of cubes that are color coded by language.
-- [ ] Render new question (cubes) as set intervals -- this requires a queue.
-- [ ] Inspect blocks by hovering over them with a cursor. This should show question details.
-- [ ] Filter languages by typing.
-
-In addition, this project will include:
-
-- [ ] A production README
+[View bufferflow here](https://bf.sksea.me).
 
 ### Commands
-dev
+Start development server. (Default port 8000)
 ```
 npm run dev
 ```
 
-prod
+Build production assets with webpack.
 ```
 npm run build
 ```
 
-### Wireframes
-
-![buf](https://raw.githubusercontent.com/sksea/i/master/bufferflow/bufferflow.png)
-
-### Architecture and Technologies
+### Technologies
 
 This project will be implemented with the following technologies:
 
 - `JavaScript` for general application logic.
 - `three.js` for 3D rendering.
-- `webpack` to bundle js files.
+- `TweenMax` for assisting in transitions between some of the cube movements.
+- `axios` for fetching data from Stackexchange's API.
+- `webpack` to bundle js files and set up a local dev server.
 
-In addition to the entry file, there will be three scripts involved in this project (tentative):
+### Architecture
 
-- cube.js - representing a question in three js.
-- bufferflow.js - main application logic
-- SEUtils.js - http methods for fetching data from stackexchange API.
-- canvasController.js - for interacting with three JS canvas.
+#### Entry point
 
-### Implementation Timeline
+In the entry point `main.js`, the `Visualization` object is insantiated and provided a callback to fetch data. In hindsight, this callback more appropriately belongs with the rest of the HTTP utility functions in `SEUtils.js`.
 
-**Day 1:**
-- Set up index.html with canvas for Three.js and webpack to bundle code.  
-- Set up application to fetch data from [Stackexchange endpoints](https://api.stackexchange.com/docs).
-  - base path: https://api.stackexchange.com/2.2  
-  - [/questions](https://api.stackexchange.com/docs/questions)  
-  - [/questions/{ids}](https://api.stackexchange.com/docs/questions-by-ids)  
-  - [/questions/{ids}/answers](https://api.stackexchange.com/docs/answers-on-questions)  
-  - [/answers/{ids}](https://api.stackexchange.com/docs/answers-by-ids)
-- Fetching should happen at regular intervals, and responses should be queued into an array before they are rendered onto the screen. This will create the sense of a 'stream' visually.
-- Learn enough threejs to render cubes on the screen. Stackoverflow questions will be represented by these cubes.
+Below is the callback responsible for fetching data. The methods prefixed with "fetch" are simple AJAX requests made to StackExchange's API. The requests are made sequentially with `promises` since we need a question's ID before we're able to get information associated to it. A `resData` object is built up and passed to the visualization instance via `vz.load(data)`.
 
-**Day 2:**
-- Authenticate application.
-- Continue with threejs, cubes should now be rendered and color coded by language.
-- Add movement to cubes.
-- Add raycasting for mouse hover interaction with threejs elements. The intention is to hover over a cube (question) and some basic detail about the question should appear.
-- Add stats on the side of application that keeps track of question and answers per language.
+```js
+  const fetchData = () => {
+    const resData = {};
+    SEUtils.fetchQuestions()
+    .then( res => { // questions
+      resData.questions = res.data.items;
+      return SEUtils.fetchQuestionDetailsFromItems(res.data.items);
+    })
+    .then( res => { // question details
+      resData.questionDetails = res.data.items;
+      return SEUtils.fetchAcceptedAnswersFromItems(res.data.items);
+    })
+    .then( res => { // accepted answers
+      resData.acceptedAnswers = res.data.items;
+      const seData = SEUtils.packageData(resData);
+      vz.load(seData);
+      window.quotaRemaining = res.data.quota_remaining;
+    });
+  };
+```
 
-**Day 3:**
-- Add typing interaction used to filter cubes.
-- Add controls to filter cubes by time.
+The `load` method destructures data provided by `fetchData` and creates custom `SEObj`s (which stand for stack exchange object). Basically, this is the code representing each cube you see. `SEObj` encapsulates all the relevant stack exchange data together with the three.js components (mesh, shaders) required to visualize it. 
 
-**Bonus:**
-- Allow typing to filter 
-- Cache data in a simple Rails server to reduce HTTP requests. Will require hosting the server somewhere.
+```js
+  load({ questions, questionDetails, acceptedAnswers }) {
+    const qids = Object.keys(questions);
+    qids.map( qid => {
+      const question = questions[qid];
+      question.tags = arrayToObj(question.tags);
+      const questionDetail = questionDetails[qid];
+      const acceptedAnswer = acceptedAnswers[questionDetail.accepted_answer_id];
+      const SEData = {
+        question,
+        questionDetail,
+        acceptedAnswer,
+      };
+      const SEObj = new SEObject(SEData, this);
+      this.SEObjBuffer.push(SEObj);
+    });
+  }
+```
+
+#### Visualization class
+
+This class encapsulates the entire visualization on a high level. In this class, you will find: 
+- references to three.js components required to render the screen
+- data structures (buffers and hash maps) to contain information needing to be rendered
+- and event handlers for mouse and keyboard interaction.
+
+
