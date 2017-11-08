@@ -2,7 +2,9 @@
 
 Bufferflow is a 3D visualization of Stackoverflow questions and data. Prompted by my curiosity in which technologies others are interested in and a desire to play with three.js, a WebGL library written in JavaScript, this project seemed like a good opportunity to combine the two. Bufferflow tries to present data such as question topic, comments, and upvotes intuitively and interactively.
 
-[View bufferflow here](https://bf.sksea.me).
+[View bufferflow here](https://bf.sksea.me).  
+
+![bf](https://raw.githubusercontent.com/sksea/i/master/bufferflow/bf.gif)
 
 ### Commands
 Start development server. (Default port 8000)
@@ -54,7 +56,7 @@ Below is the callback responsible for fetching data. The methods prefixed with "
   };
 ```
 
-The `load` method destructures data provided by `fetchData` and creates custom `SEObj`s (which stand for stack exchange object). Basically, this is the code representing each cube you see. `SEObj` encapsulates all the relevant stack exchange data together with the three.js components (mesh, shaders) required to visualize it. 
+The `load` method destructures data provided by `fetchData` and creates custom `SEObject`s (which stand for stack exchange object). Basically, this is the code representing each cube you see. `SEObject`s are described in more detail later.
 
 ```js
   load({ questions, questionDetails, acceptedAnswers }) {
@@ -83,3 +85,24 @@ This class encapsulates the entire visualization on a high level. In this class,
 - and event handlers for mouse and keyboard interaction.
 
 
+#### SEObject class
+
+`SEObject` encapsulates all the relevant stack exchange data together with the three.js components (mesh, shaders) necessary to visualize it. The size of a cube (and mesh) is scaled by how many responses/comments a question has, and the movement/velocity is in turn determined by the cube's size.
+
+```js
+class SEObject {
+  
+  constructor(SEData, viz) {
+    this.SEData = SEData;
+    this.viz = viz;
+    this.mesh = createMesh.call(this);
+    this.id = this.mesh.uuid;
+    this.movement_0 = calcDefaultMovement.call(this);
+    this.movement_c = Object.assign({}, this.movement_0);
+    this.moving = true;
+    this.displayInfo = false;
+  }
+  ...
+
+}
+```
