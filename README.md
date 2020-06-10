@@ -2,7 +2,7 @@
 
 Bufferflow is a 3D visualization of Stackoverflow questions and data. Prompted by my curiosity in which technologies others are interested in and a desire to play with three.js, a WebGL library written in JavaScript, this project seemed like a good opportunity to combine the two. Bufferflow tries to present data such as question topic, comments, and upvotes intuitively and interactively.
 
-[View bufferflow here](https://bf.sksea.me).  
+[View bufferflow here](https://bf.ay18.me/).  
 
 ![bf](https://raw.githubusercontent.com/sksea/i/master/bufferflow/bf.gif)
 
